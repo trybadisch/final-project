@@ -5,8 +5,12 @@
 	<header>
 		<table id="div-info">
 			<tr>
-				<td id="news"><-- ...Moving News text... <-- </td>
-				<td id="weather">Weather in [Place]: Cloudy</td>
+				<td id="news"><marquee behavior="scroll" direction="left" scrollamount=4>
+					{% for item in news %}
+						< {{ item.title }} {{ item.description }} >&emsp;
+					{% endfor %}
+				</marquee></td>
+				<td id="weather">Weather in {{ data.city }}: {{ weather }}</td>
 			</tr>
 		</table>
 		<ul>
@@ -20,7 +24,7 @@
 				<li><a href="about">ABOUT</a></li>
 				<div id="div-right">
 					<li class="right">[Server running time: since reset]</li>
-					<li class="right">[Date/Time: current]</li>
+					<li class="right">{{ time }}</li>
 				</div>
 			</div>
 		</ul>
@@ -29,12 +33,22 @@
 	<div class="body-contents">
 		<div id="div-main">
 			<div id="data-flex">
-				<h2>Welcome [name]</h2>
+				<h2>Welcome {{ ip }}</h2>
 
-				<p>This is [your sistem]</p>
-				<p>This is your publicly available digital fingerprint:</p>
-				<p>...</p>
-				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>End of test.
+				<p>You live in {{ data.country_name }}.<br>
+				In {{ data.city }} city, in {{ data.region }}.<br>
+				Your postal code is {{ data.postal }}.</p>
+
+				<p>Your coordinates are: {{ data.latitude }} lat. {{ data.longitude }} long.</p>
+
+				<p>Your languages are: {{ data.languages }}.</p>
+
+				<p>Your ISP is {{ data.org }}.<br>
+				Your IP version is {{ data.version }}.</p>
+
+				--------------------
+
+				<p>System info:</p>
 			</div>
 			<form>
 				<input id="terminal" type="text" placeholder=">" name="command">
