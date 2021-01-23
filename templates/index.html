@@ -3,16 +3,7 @@
 {% block body %}
 <div class="container">
 	<header>
-		<table id="div-info">
-			<tr>
-				<td id="news"><marquee behavior="scroll" direction="left" scrollamount=4>
-					{% for item in news %}
-						< {{ item.title }} {{ item.description }} >&emsp;
-					{% endfor %}
-				</marquee></td>
-				<td id="weather">Weather in {{ data.city }}: {{ weather }}</td>
-			</tr>
-		</table>
+		{% include "news.html" %}
 		<ul>
 			<div id="drop-links">
 				<li><a onclick="dropdown()" class="active">[ MAIN ]</a></li>

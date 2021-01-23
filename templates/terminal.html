@@ -3,12 +3,7 @@
 {% block body %}
 <div class="container">
 	<header>
-		<table id="div-info">
-			<tr>
-				<td id="news"><-- ...Moving News text... <-- </td>
-				<td id="weather">Weather in [Place]: Cloudy</td>
-			</tr>
-		</table>
+		{% include "news.html" %}
 		<ul>
 			<div id="drop-links">
 				<li><a href="/">MAIN</a></li>

@@ -7,3 +7,26 @@ function dropdown() {
           'inline-block';
      }
 }
+
+// console.log("Cookies: " + navigator.cookieEnabled);
+// console.log("Browser Language: " + navigator.browserLanguage);
+// console.log("Language: " + navigator.language);
+// console.log("Platform: " + navigator.platform);
+// console.log("Connection Speed: " + navigator.connectionSpeed);
+// console.log("User Agent: " + navigator.userAgent);
+// console.log("Webdriver: " + navigator.webdriver);
+// console.log("Geolocation: " + navigator.geolocation);
+
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+
+// navigator.connection
+// navigator.deviceMemory
+// navigatorConcurrentHardware.hardwareConcurrency  // number of logical CPU cores
+// navigatorLanguage.language
+// navigatorLanguage.languages
+// navigator.mediaDevices
+// navigator.userAgent
+// navigator.onLine
+
+// console.log(document.referrer)
