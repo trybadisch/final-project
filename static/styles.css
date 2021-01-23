@@ -96,7 +96,7 @@ a {
      margin: 0 0 1rem;
 }
 .wrapper {
-     position: relative;
+     position: relative; flex-grow: 1;
 }
 #dashboard {
      max-height: 35vh;
@@ -119,3 +119,5 @@ input {
      box-sizing: border-box;
      font-size: 0.8rem; font-family: 'Fira Code';
 }
+
+/* Specific pages */
