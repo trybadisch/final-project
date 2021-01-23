@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+	<header>
+		<table id="div-info">
+			<tr>
+				<td id="news"><-- ...Moving News text... <-- </td>
+				<td id="weather">Weather in [Place]: Cloudy</td>
+			</tr>
+		</table>
+		<ul>
+			<div id="drop-links">
+				<li><a href="/">MAIN</a></li>
+				<li><a href="data">DATA</a></li>
+				<li><a onclick="dropdown()" class="active">[ TERMINAL ]</a></li>
+				<li><a href="dashboard">DASHBOARD</a></li>
+				<li><a href="screensaver">SCREENSAVER</a></li>
+				<li><a href="map">MAP</a></li>
+				<li><a href="about">ABOUT</a></li>
+				<div id="div-right">
+					<li class="right">[Server running time: since reset]</li>
+					<li class="right">[Date/Time: current]</li>
+				</div>
+			</div>
+		</ul>
+	</header>
+
+	<div class="body-contents">
+		<div id="div-main">
+			<div id="data-flex" style="height: auto">
+				<h2>Terminal Commands</h2>
+
+				<p>This is a list of the commands available:</p>
+				<p>...</p>
+			</div>
+			<form>
+				<input id="terminal" type="text" placeholder=">" name="command">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
