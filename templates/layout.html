@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="initial-scale=1, width=device-width">
+     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+     <link href="../static/styles.css" rel="stylesheet">  <!-- change relative path! -->
+     <script src="../static/script.js"></script>
+     <title>Welcome</title>
+</head>
+<body>
+     <div class="container">
+          <header>
+               <table id="div-info">
+                    <tr>
+                         <td id="news"><-- ...Moving News text... <-- </td>
+                         <td id="weather">Weather in [Place]: Cloudy</td>
+                    </tr>
+               </table>
+               <ul>
+                    <div id="drop-links">
+                         <li><a onclick="dropdown()" class="active dropbtn">[ MAIN ]</a></li>
+                         <li><a href="other.html">DATA</a></li>
+                         <li><a href="other.html">TERMINAL</a></li>
+                         <li><a href="other.html">DASHBOARD</a></li>
+                         <li><a href="other.html">SCREENSAVER</a></li>
+                         <li><a href="other.html">MAP</a></li>
+                         <li><a href="other.html">ABOUT</a></li>
+                         <div id="div-right">
+                              <li class="right">[Server running time: since reset]</li>
+                              <li class="right">[Date/Time: current]</li>
+                         </div>
+                    </div>
+               </ul>
+          </header>
+
+          <!-- {% block body %} -->
+          <div class="body-contents">
+               <div id="div-main">
+                    <div id="data-flex">
+                         <h2>Welcome [name]</h2>
+
+                         <p>This is [your sistem]</p>
+                         <p>This is your publicly available digital fingerprint:</p>
+                         <p>...</p>
+                         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>End of test.
+                    </div>
+                    <form>
+                         <input id="terminal" type="text" placeholder=">" name="command">
+                    </form>
+               </div>
+               <div class="vertical-flex">
+                    <div id="map">
+                         Map placeholder
+                    </div>
+                    <div class="wrapper">
+                    <div id="dashboard">
+                         Dashboard placeholder
+                         <br>
+                         -----
+                         <br>
+                         Some message...
+                         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                         <form id="message-form">
+                              <input id="message" type="text" placeholder="Leave a message" name="message">
+                         </form>
+                    </div>
+                    </div>
+               </div>
+          </div>
+          <!-- {% endblock %} -->
+
+     </div>
+</body>
+</html>
