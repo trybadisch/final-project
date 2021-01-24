@@ -121,3 +121,8 @@ input {
      box-sizing: border-box;
      font-size: 0.8rem; font-family: 'Fira Code';
 }
+hr {
+     color: #5AFA7B;
+     height:0px;
+     border-width:1px;
+}

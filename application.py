@@ -49,13 +49,6 @@ def index():
 
 	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time)
 
-@app.route("/data")
-def data():
-	get_info()
-	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
-
-	return render_template("data.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time)
-
 @app.route("/terminal")
 def terminal():
 	get_info()

@@ -7,7 +7,6 @@
 		<ul>
 			<div id="drop-links">
 				<li><a onclick="dropdown()" class="active">[ MAIN ]</a></li>
-				<li><a href="data">DATA</a></li>
 				<li><a href="terminal">TERMINAL</a></li>
 				<li><a href="dashboard">DASHBOARD</a></li>
 				<li><a href="map">MAP</a></li>
@@ -24,6 +23,8 @@
 		<div id="div-main">
 			<div id="data-flex">
 				<h2>Welcome <span class="color">{{ ip }}</span></h2>
+
+				<p>This is your digital fingerprint:</p>
 
 				<p>You live in <span class="color">{{ data.country_name }}</span>.<br>
 					In <span class="color">{{ data.city }} city</span>, in <span class="color">{{ data.region }}</span>.<br>
@@ -52,12 +53,12 @@
 		<div class="vertical-flex">
 			<div id="map">
 				Map placeholder
+				<!-- http://mikefowler.me/smallworld.js/ -->
 			</div>
 			<div class="wrapper">
 				<div id="dashboard">
-					Dashboard placeholder
-					<br>
-					-----
+					Dashboard
+					<hr>
 					<br>
 					Some message...
 					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
