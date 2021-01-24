@@ -2,9 +2,9 @@
      <tr>
           <td id="news"><marquee behavior="scroll" direction="left" scrollamount=4>
                {% for item in news %}
-                    < {{ item.title }} - {{ item.description }} >&emsp;
+                    < <span class="color">{{ item.title }} - {{ item.description }}</span> >&emsp;
                {% endfor %}
           </marquee></td>
-          <td id="weather">Weather in {{ data.city }}: {{ weather }}</td>
+          <td id="weather">Weather in <span class="color">{{ data.city }}: {{ weather }}</span></td>
      </tr>
 </table>

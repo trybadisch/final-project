@@ -6,27 +6,23 @@ function dropdown() {
           (elements[i].style.display == 'block') ? 'none' :
           'inline-block';
      }
-}
+};
 
-// console.log("Cookies: " + navigator.cookieEnabled);
-// console.log("Browser Language: " + navigator.browserLanguage);
-// console.log("Language: " + navigator.language);
-// console.log("Platform: " + navigator.platform);
-// console.log("Connection Speed: " + navigator.connectionSpeed);
-// console.log("User Agent: " + navigator.userAgent);
-// console.log("Webdriver: " + navigator.webdriver);
-// console.log("Geolocation: " + navigator.geolocation);
+document.addEventListener('DOMContentLoaded', function() {
 
+     document.getElementById('language').innerHTML = navigator.language;
+     document.getElementById('os').innerHTML = navigator.platform;
+     document.getElementById('cpu').innerHTML = navigator.hardwareConcurrency;
+     document.getElementById('user-agent').innerHTML = navigator.userAgent;
+     document.getElementById('referrer').innerHTML = document.referrer;
+     document.getElementById('referrer').href = document.referrer;
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+     online = (navigator.onLine) ? 'online' : 'offline';
+     document.getElementById('online').innerHTML = online;
 
-// navigator.connection
-// navigator.deviceMemory
-// navigatorConcurrentHardware.hardwareConcurrency  // number of logical CPU cores
-// navigatorLanguage.language
-// navigatorLanguage.languages
-// navigator.mediaDevices
-// navigator.userAgent
-// navigator.onLine
+     cookies = (navigator.cookieEnabled) ? 'enabled' : 'disabled';
+     document.getElementById('cookies').innerHTML = cookies;
 
-// console.log(document.referrer)
+     document.getElementById('screenX').innerHTML = screen.width;
+     document.getElementById('screenY').innerHTML = screen.height;
+});

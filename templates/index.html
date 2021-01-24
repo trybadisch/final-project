@@ -10,12 +10,11 @@
 				<li><a href="data">DATA</a></li>
 				<li><a href="terminal">TERMINAL</a></li>
 				<li><a href="dashboard">DASHBOARD</a></li>
-				<li><a href="screensaver">SCREENSAVER</a></li>
 				<li><a href="map">MAP</a></li>
 				<li><a href="about">ABOUT</a></li>
 				<div id="div-right">
-					<li class="right">[Server running time: since reset]</li>
-					<li class="right">{{ time }}</li>
+					<li class="right">Server running time: <span class="color">since reset</span></li>
+					<li class="right"><span class="color">{{ time }}</span></li>
 				</div>
 			</div>
 		</ul>
@@ -24,22 +23,27 @@
 	<div class="body-contents">
 		<div id="div-main">
 			<div id="data-flex">
-				<h2>Welcome {{ ip }}</h2>
+				<h2>Welcome <span class="color">{{ ip }}</span></h2>
 
-				<p>You live in {{ data.country_name }}.<br>
-				In {{ data.city }} city, in {{ data.region }}.<br>
-				Your postal code is {{ data.postal }}.</p>
+				<p>You live in <span class="color">{{ data.country_name }}</span>.<br>
+					In <span class="color">{{ data.city }} city</span>, in <span class="color">{{ data.region }}</span>.<br>
+					Your postal code is <span class="color">{{ data.postal }}</span>.</p>
 
-				<p>Your coordinates are: {{ data.latitude }} lat. {{ data.longitude }} long.</p>
+				<p>Your coordinates are: <span class="color">{{ data.latitude }} lat. {{ data.longitude }} long</span>.</p>
 
-				<p>Your languages are: {{ data.languages }}.</p>
+				<p>Your languages are: <span class="color">{{ data.languages }}</span>.<br>
+					Your browser's language is <span id="language" class="color"></span></p>
 
-				<p>Your ISP is {{ data.org }}.<br>
-				Your IP version is {{ data.version }}.</p>
+				<p>Your OS is <span id="os" class="color"></span>. You have <span id="cpu" class="color"></span> <span class="color">CPU cores</span>.<br>
+					Your browser's user agent is: <span id="user-agent" class="color"></span>.</p>
 
-				--------------------
+				<p>Your ISP is <span class="color">{{ data.org }}</span>.<br>
+					Your IP version is <span class="color">{{ data.version }}</span>.</p>
 
-				<p>System info:</p>
+				<p>You come from <a id="referrer" class="color" href="#"></a> and you are browsing <span id="online" class="color"></span>.<br>
+					Your cookies are <span id="cookies" class="color"></span>.</p>
+
+				<p>Your screen resolution is <span id="screenX" class="color"></span>x<span id="screenY" class="color"></span>.</p>
 			</div>
 			<form>
 				<input id="terminal" type="text" placeholder=">" name="command">

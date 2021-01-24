@@ -21,7 +21,7 @@ header:hover, #data-flex:hover, #map:hover, #dashboard:hover, #terminal:hover, #
 
 /* Set borders */
 header, li a, .container, #data-flex, #map, #dashboard, #drop-btn {
-     border: 1px solid limegreen;
+     border: 1px solid #5AFA7B;
 }
 input {
      border: 1px solid palegreen;
@@ -35,10 +35,11 @@ html, #data-flex, #dashboard {
 
 body {
      margin: 0;
-     background-color: black; color: limegreen;
+     background-color: #0d0d0d; color: white;
      font-size: 0.8rem; font-family: 'Fira Code';
      height: 100%;
 }
+.color { color: #5AFA7B; }
 header {
      padding: 1rem 1rem 0;
      margin-bottom: 1rem;
@@ -60,7 +61,7 @@ li .active { background-color: palegreen; color: black; }
 li a:hover { background-color: palegreen; color: black; transition: 0.1s ease-in-out;}
 a {
      text-decoration: none;
-     color: limegreen;
+     color: white;
 }
 
 #news, #weather { white-space: nowrap; }
@@ -115,10 +116,8 @@ a {
 input {
      margin-top: 1rem; margin-bottom: 0; padding: 0.5rem;
      padding: auto;
-     background-color: black; color: limegreen;
+     background-color: #0d0d0d; color: #5AFA7B;
      width: 100%;
      box-sizing: border-box;
      font-size: 0.8rem; font-family: 'Fira Code';
 }
-
-/* Specific pages */
