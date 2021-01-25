@@ -10,19 +10,43 @@ function dropdown() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-     document.getElementById('language').innerHTML = navigator.language;
-     document.getElementById('os').innerHTML = navigator.platform;
-     document.getElementById('cpu').innerHTML = navigator.hardwareConcurrency;
-     document.getElementById('user-agent').innerHTML = navigator.userAgent;
-     document.getElementById('referrer').innerHTML = document.referrer;
-     document.getElementById('referrer').href = document.referrer;
+     if (document.URL.includes("index")) {
+          document.getElementById('language').innerHTML = navigator.language;
+          document.getElementById('os').innerHTML = navigator.platform;
+          document.getElementById('cpu').innerHTML = navigator.hardwareConcurrency;
+          document.getElementById('user-agent').innerHTML = navigator.userAgent;
+          document.getElementById('referrer').innerHTML = document.referrer;
+          document.getElementById('referrer').href = document.referrer;
 
-     online = (navigator.onLine) ? 'online' : 'offline';
-     document.getElementById('online').innerHTML = online;
+          online = (navigator.onLine) ? 'online' : 'offline';
+          document.getElementById('online').innerHTML = online;
 
-     cookies = (navigator.cookieEnabled) ? 'enabled' : 'disabled';
-     document.getElementById('cookies').innerHTML = cookies;
+          cookies = (navigator.cookieEnabled) ? 'enabled' : 'disabled';
+          document.getElementById('cookies').innerHTML = cookies;
 
-     document.getElementById('screenX').innerHTML = screen.width;
-     document.getElementById('screenY').innerHTML = screen.height;
+          document.getElementById('screenX').innerHTML = screen.width;
+          document.getElementById('screenY').innerHTML = screen.height;
+
+          // detect incognito
+     }
+
+     $.getJSON("static/smallworld/dist/world.json", function(data) {
+          var data = data;
+
+          Smallworld.defaults.geojson = data;
+          $('.map').smallworld({
+               center: [42, 5],
+               waterColor: '#0d0d0d',
+               landColor: '#5AFA7B',
+          });
+
+          if (document.URL.includes("map")) {
+               $('.map').smallworld({
+                    center: [42, 10],
+                    waterColor: '#0d0d0d',
+                    landColor: '#5AFA7B',
+     	          zoom: 2,
+               });
+          }
+     });
 });

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+	<header>
+		{% include "news.html" %}
+		<ul>
+			<div id="drop-links">
+				<li><a href="/">MAIN</a></li>
+				<li><a href="terminal">TERMINAL</a></li>
+				<li><a href="dashboard">DASHBOARD</a></li>
+				<li><a onclick="dropdown()" class="active">[ MAP ]</a></li>
+				<li><a href="about">ABOUT</a></li>
+				<div id="div-right">
+					<li class="right">[Server running time: since reset]</li>
+					<li class="right">[Date/Time: current]</li>
+				</div>
+			</div>
+		</ul>
+	</header>
+	<div class="body-contents">
+		<div class="map" style="margin: auto; width: 62vw; height: 86vh">
+		</div>
+	</div>
+</div>
+{% endblock %}

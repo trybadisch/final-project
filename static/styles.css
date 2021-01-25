@@ -15,12 +15,12 @@
 }
 
 /* Hover background color */
-header:hover, #data-flex:hover, #map:hover, #dashboard:hover, #terminal:hover, #message:hover {
+header:hover, #data-flex:hover, .map:hover, #dashboard:hover, #terminal:hover, #message:hover {
      background-color: #98FB9830; transition: 0.2s ease-in-out;
 }
 
 /* Set borders */
-header, li a, .container, #data-flex, #map, #dashboard, #drop-btn {
+header, li a, .container, #data-flex, .map, #dashboard, #drop-btn {
      border: 1px solid #5AFA7B;
 }
 input {
@@ -63,6 +63,9 @@ a {
      text-decoration: none;
      color: white;
 }
+a:hover {
+     color: #5AFA7B;
+}
 
 #news, #weather { white-space: nowrap; }
 #weather { padding-left: 5rem; }
@@ -90,18 +93,19 @@ a {
      flex-direction: column;
      height: auto;
 }
-#map {
-     height: 250px;
+.map {
+     height: 150px;
      width: 250px;
      overflow: auto;
      padding: 1rem;
      margin: 0 0 1rem;
+     position: relative;
 }
 .wrapper {
      position: relative; flex-grow: 1;
 }
 #dashboard {
-     max-height: 35vh;
+     max-height: 48vh;
      overflow: auto;
      flex-grow: 1;
      padding: 1rem;

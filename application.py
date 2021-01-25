@@ -63,6 +63,12 @@ def dashboard():
 
 	return render_template("dashboard.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time)
 
+@app.route("/map")
+def map():
+	get_info()
+	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
+
+	return render_template("map.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time)
 
 @app.route("/about")
 def about():
