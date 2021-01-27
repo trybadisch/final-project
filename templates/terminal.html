@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<script>
+	theme = '{{ theme }}';
+</script>
 <div class="container">
 	<header>
 		{% include "news.html" %}
@@ -24,10 +27,15 @@
 			<div id="data-flex" style="height: auto">
 				<h2>Terminal Commands</h2>
 
-				<p>This is a list of the commands available:</p>
-				<p>...</p>
+				<p>List of currently available commands:</p>
+				<p>To change the color scheme:</p>
+				<span class="color">color-green</span>&emsp;<span style="color: gray">[ default ]</span><br>
+				<span class="color">color-red<br>
+				color-blue<br>
+				theme-light</span><br>
+				<p><span style="color: gray">[ work in progress ]</span></p>
 			</div>
-			<form>
+			<form method="post">
 				<input id="terminal" type="text" placeholder=">" name="command">
 			</form>
 		</div>

@@ -29,16 +29,30 @@ document.addEventListener('DOMContentLoaded', function() {
      }
 
      $.getJSON("static/smallworld/dist/world.json", function(data) {
-          data = data;
+
+          water = '#0d0d0d';
+          land = '#5AFA7B';
+          marker = '#FF5555';
+
+          if (theme == "light") {
+               water = '#f2f2f2';
+               land = '#008080';
+          } else {
+               if (theme == "red") {
+                    land = '#FF5555';
+                    marker = '#5AFA7B';
+               } else if (theme == "blue") {
+                    land = '#40E0D0';
+               }
+          }
 
           if (location.pathname == "/") {
                Smallworld.defaults.geojson = data;
                $('.map').smallworld({
                     center: [42, 5],
-                    waterColor: '#0d0d0d',
-                    landColor: '#5AFA7B',
-
-                    markerColor: '#FF5555',
+                    waterColor: water,
+                    landColor: land,
+                    markerColor: marker,
                     markerSize: 4,
                     marker: [latitude, longitude],
                });
@@ -47,12 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
                Smallworld.defaults.geojson = data;
                $('.map').smallworld({
                     center: [42, 10],
-                    waterColor: '#0d0d0d',
-                    landColor: '#5AFA7B',
+                    waterColor: water,
+                    landColor: land,
      	          zoom: 2,
-
-                    markerColor: '#FF5555',
-                    markerSize: 6,
+                    markerColor: marker,
+                    markerSize: 8,
                     marker: [latitude, longitude],
                });
           }
