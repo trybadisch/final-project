@@ -1,14 +1,16 @@
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, render_template, request
 import requests
 import sqlite3
 import datetime as dt
+import os
 
-weather_api = "378b45b6e39bf0dfae6de624f1755760"
-news_api = "f427c0f6059648f5a0a85f8cda8a6cd8"
+WEATHER_API = os.getenv('WEATHER_API')
+NEWS_API = os.getenv('NEWS_API')
 
 DATA = None
 MESSAGES = None
 THEME = "green"
+RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
 def get_info():
 	global DATA
@@ -20,7 +22,7 @@ def get_info():
 
 		weather_params = {
 			"lat": data["latitude"], "lon": data["longitude"],
-			"appid": weather_api
+			"appid": WEATHER_API
 		}
 		response = requests.get(url='https://api.openweathermap.org/data/2.5/weather', params=weather_params)
 		weather = response.json()["weather"][0]["description"].title()
@@ -28,7 +30,7 @@ def get_info():
 		news_params = {
 			"language": "en",
 			"sortBy": "popularity",
-			"apiKey": news_api
+			"apiKey": NEWS_API
 		}
 		response = requests.get(url='http://newsapi.org/v2/top-headlines', params=news_params)
 		news = response.json()["articles"][:3]
@@ -94,7 +96,7 @@ def index():
 		if terminal:
 			theme_change(terminal)
 
-	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME)
+	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME, runtime=RUNNING)
 
 @app.route("/terminal", methods=["GET", "POST"])
 def terminal():
@@ -106,7 +108,7 @@ def terminal():
 		if terminal:
 			theme_change(terminal)
 
-	return render_template("terminal.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME)
+	return render_template("terminal.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
@@ -120,18 +122,18 @@ def dashboard():
 			new_message(message)
 			check_msg()
 
-	return render_template("dashboard.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME)
+	return render_template("dashboard.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME, runtime=RUNNING)
 
 @app.route("/map")
 def map():
 	get_info()
 	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-	return render_template("map.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME)
+	return render_template("map.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
 
 @app.route("/about")
 def about():
 	get_info()
 	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-	return render_template("about.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME)
+	return render_template("about.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)

@@ -8,8 +8,42 @@ function dropdown() {
      }
 };
 
+// Clock function
+function getDateTime() {
+     var now     = new Date();
+     var year    = now.getFullYear();
+     var month   = now.getMonth()+1;
+     var day     = now.getDate();
+     var hour    = now.getHours();
+     var minute  = now.getMinutes();
+     var second  = now.getSeconds();
+     if(month.toString().length == 1) {
+          month = '0'+month;
+     }
+     if(day.toString().length == 1) {
+          day = '0'+day;
+     }
+     if(hour.toString().length == 1) {
+          hour = '0'+hour;
+     }
+     if(minute.toString().length == 1) {
+          minute = '0'+minute;
+     }
+     if(second.toString().length == 1) {
+          second = '0'+second;
+     }
+     var dateTime = day+'/'+month+'/'+year+' - '+hour+':'+minute+':'+second;
+     return dateTime;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
+     setInterval(function(){
+          currentTime = getDateTime();
+          document.getElementById("clock").innerHTML = currentTime;
+     }, 1000);
+
+     // Get info
      if (location.pathname == "/") {
           document.getElementById('language').innerHTML = navigator.language;
           document.getElementById('os').innerHTML = navigator.platform;
@@ -28,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
           document.getElementById('screenY').innerHTML = screen.height;
      }
 
+     // Render map
      $.getJSON("static/smallworld/dist/world.json", function(data) {
-
           water = '#0d0d0d';
           land = '#5AFA7B';
           marker = '#FF5555';

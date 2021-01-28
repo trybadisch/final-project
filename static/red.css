@@ -115,7 +115,7 @@ a:hover {
      bottom: 20px;
      width: 250px;
 }
-#div-right { float: right; padding: 0.5rem; }
+#div-right { float: right; padding: 0.5rem; text-align: right; }
 .right { display: list-item; }
 input {
      margin-top: 1rem; margin-bottom: 0; padding: 0.5rem;

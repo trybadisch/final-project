@@ -14,10 +14,7 @@
 				<li><a href="dashboard">DASHBOARD</a></li>
 				<li><a href="map">MAP</a></li>
 				<li><a onclick="dropdown()" class="active">[ ABOUT ]</a></li>
-				<div id="div-right">
-					<li class="right">[Server running time: since reset]</li>
-					<li class="right">[Date/Time: current]</li>
-				</div>
+				{% include "clock.html" %}
 			</div>
 		</ul>
 	</header>
@@ -31,7 +28,10 @@
 				<a href="http://newsapi.org">http://newsapi.org</a><br>
 				<a href="http://mikefowler.me/smallworld.js">http://mikefowler.me/smallworld.js</a>
 
-     			<p>...</p>
+     			<p>--------------------</p>
+
+				<p>This website does provide an exetended fingerprint. All the data shown is gathered just through IP checking and JavaScript.<br>
+				If you want to know exactly how unique your fingerprint is visit: <a href="https://amiunique.org">https://amiunique.org</a>.</p><br>
 
 				<a href="https://github.com/trybadisch">https://github.com/trybadisch</a>
      		</div>

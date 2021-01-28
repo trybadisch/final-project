@@ -17,10 +17,7 @@
 				<li><a href="dashboard">DASHBOARD</a></li>
 				<li><a href="map">MAP</a></li>
 				<li><a href="about">ABOUT</a></li>
-				<div id="div-right">
-					<li class="right">Server running time: <span class="color">since reset</span></li>
-					<li class="right"><span class="color">{{ time }}</span></li>
-				</div>
+				{% include "clock.html" %}
 			</div>
 		</ul>
 	</header>
