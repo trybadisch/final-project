@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import requests
 import sqlite3
 import datetime as dt
@@ -12,13 +12,29 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-def get_info():
-	global DATA
-	if not DATA:
-		# ip = request.remote_addr
-		ip = "92.57.105.25"
+IP = None
+ERROR = None
+
+def get_info(forced=False):
+	global DATA, ERROR, IP
+	if not DATA or not forced:
+		if not IP:
+			ip = requests.get(url='https://api64.ipify.org?format=json').json()['ip']
+		else:
+			ip = IP
 		response = requests.get(url=f'https://ipapi.co/{ip}/json/')
 		data = response.json()
+
+		try:
+			if data["error"]:
+				print("[+]", data)
+				IP = None
+				ERROR = data["reason"]
+				return
+			else:
+				ERROR = None
+		except KeyError:
+			pass
 
 		weather_params = {
 			"lat": data["latitude"], "lon": data["longitude"],
@@ -87,6 +103,7 @@ def index():
 	check_msg()
 	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
+	global IP
 	if request.method == "POST":
 		message=request.form.get("message")
 		terminal=request.form.get("command")
@@ -94,7 +111,12 @@ def index():
 			new_message(message)
 			check_msg()
 		if terminal:
-			theme_change(terminal)
+			if "color" in terminal or "theme" in terminal:
+				theme_change(terminal)
+			elif "check" in terminal:
+				IP = terminal.split()[1]
+				get_info(forced=True)
+				return redirect("/")
 
 	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME, runtime=RUNNING)
 
@@ -103,10 +125,16 @@ def terminal():
 	get_info()
 	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
+	global IP
 	if request.method == "POST":
 		terminal=request.form.get("command")
 		if terminal:
-			theme_change(terminal)
+			if "color" in terminal or "theme" in terminal:
+				theme_change(terminal)
+			elif "check" in terminal:
+				IP = terminal.split()[1]
+				get_info(forced=True)
+				return redirect("/")
 
 	return render_template("terminal.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
 
@@ -137,3 +165,9 @@ def about():
 	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
 	return render_template("about.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
+
+@app.route("/error")
+def error():
+	time = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
+
+	return render_template("error.html", reason=ERROR, theme=THEME, runtime=RUNNING)
