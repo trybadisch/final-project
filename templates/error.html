@@ -6,7 +6,6 @@
 </script>
 <div class="container">
 	<header>
-
 		<ul>
 			<div id="drop-links">
 				<li><a href="/">MAIN</a></li>
@@ -14,6 +13,7 @@
 				<li><a href="dashboard">DASHBOARD</a></li>
 				<li><a href="map">MAP</a></li>
 				<li><a href="about">ABOUT</a></li>
+				<li><a onclick="dropdown()" class="active">[ ERROR ]</a></li>
 				{% include "clock.html" %}
 			</div>
 		</ul>
@@ -23,7 +23,8 @@
      		<div id="data-flex" style="height: auto; padding-bottom: 1rem;">
      			<h2>Error</h2>
 
-				<p>{{ reason }}.</p>
+				<p>IP address not accessible.<br>
+				Reson: {{ reason }}.</p>
      		</div>
      	</div>
      </div>
