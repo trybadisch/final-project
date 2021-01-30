@@ -13,7 +13,7 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-IP = None
+IP = "216.58.201.142"
 ERROR = None
 
 def get_info(forced=False):
@@ -30,7 +30,6 @@ def get_info(forced=False):
 		api_params = {
 			"access_key": IP_API,
 			"hostname": 1,
-
 		}
 		response = requests.get(url=f'http://api.ipapi.com/api/{ip}', params=api_params)
 		data = response.json()
