@@ -61,19 +61,19 @@ def get_info(forced=False):
 	return
 
 def check_db():
-	connection = SQL(os.environ.get("DATABASE_URL") or "sqlite:///database.db")
+	connection = SQL(os.getenv("DATABASE_URL") or "sqlite:///database.db")
 	cursor = connection.execute("SELECT ip FROM visitors WHERE ip = ?", DATA['ip'])
 	if len(cursor) == 0:
 		connection.execute("INSERT INTO visitors (ip, lat, lon) VALUES (?, ?, ?)", DATA['ip'], DATA['data']['latitude'], DATA['data']['longitude'])
 
 def check_msg():
 	global MESSAGES
-	connection = SQL(os.environ.get("DATABASE_URL") or "sqlite:///database.db")
+	connection = SQL(os.getenv("DATABASE_URL") or "sqlite:///database.db")
 	cursor = connection.execute("SELECT * FROM messages")
 	MESSAGES = cursor
 
 def new_message(message):
-	connection = SQL(os.environ.get("DATABASE_URL") or "sqlite:///database.db")
+	connection = SQL(os.getenv("DATABASE_URL") or "sqlite:///database.db")
 	connection.execute("INSERT INTO messages (ip, message) VALUES (?, ?)", DATA['ip'], message)
 
 def theme_change(terminal):
