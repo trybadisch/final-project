@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import requests
-import sqlite3
+from cs50 import SQL
 import datetime as dt
 import os
 
@@ -12,7 +12,7 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-IP = None
+IP = "92.57.105.50"
 ERROR = None
 
 def get_info(forced=False):
@@ -61,27 +61,20 @@ def get_info(forced=False):
 	return
 
 def check_db():
-	connection = sqlite3.connect("database.db")
-	cursor = connection.execute("SELECT ip FROM visitors WHERE ip = ?", (DATA['ip'],))
-	check = cursor.fetchone()
-	if check is None:
-		connection.execute("INSERT INTO visitors (ip, lat, lon) VALUES (?, ?, ?)", (DATA['ip'], DATA['data']['latitude'], DATA['data']['longitude']))
-		connection.commit()
-	connection.close()
+	connection = SQL(os.environ.get("DATABASE_URL") or "sqlite:///database.db")
+	cursor = connection.execute("SELECT ip FROM visitors WHERE ip = ?", DATA['ip'])
+	if len(cursor) == 0:
+		connection.execute("INSERT INTO visitors (ip, lat, lon) VALUES (?, ?, ?)", DATA['ip'], DATA['data']['latitude'], DATA['data']['longitude'])
 
 def check_msg():
 	global MESSAGES
-	connection = sqlite3.connect("database.db")
+	connection = SQL(os.environ.get("DATABASE_URL") or "sqlite:///database.db")
 	cursor = connection.execute("SELECT * FROM messages")
-	messages = cursor.fetchall()
-	connection.close()
-	MESSAGES = messages
+	MESSAGES = cursor
 
 def new_message(message):
-	connection = sqlite3.connect("database.db")
-	connection.execute("INSERT INTO messages (ip, message) VALUES (?, ?)", (DATA['ip'], message))
-	connection.commit()
-	connection.close()
+	connection = SQL(os.environ.get("DATABASE_URL") or "sqlite:///database.db")
+	connection.execute("INSERT INTO messages (ip, message) VALUES (?, ?)", DATA['ip'], message)
 
 def theme_change(terminal):
 	global THEME

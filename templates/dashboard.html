@@ -24,7 +24,7 @@
 				<h2>Dashboard</h2>
 				<hr>
 				{% for msg in messages %}
-				<span class="color">{{ msg[0] }}</span>: {{ msg[1]}}<br>
+				<span class="color">{{ msg.ip }}</span>: {{ msg.message }}<br>
 				{% endfor %}
 				<br><br><br><br>
 				<form method="post">

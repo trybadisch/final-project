@@ -2,3 +2,4 @@ Flask
 requests
 cs50
 SQLAlchemy
+psycopg2
