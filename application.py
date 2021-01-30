@@ -12,7 +12,7 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-IP = None
+IP = "142.250.184.14"
 ERROR = None
 
 def get_info(forced=False):
@@ -39,12 +39,15 @@ def get_info(forced=False):
 		except KeyError:
 			pass
 
-		weather_params = {
-			"lat": data["latitude"], "lon": data["longitude"],
-			"appid": WEATHER_API
-		}
-		response = requests.get(url='https://api.openweathermap.org/data/2.5/weather', params=weather_params)
-		weather = response.json()["weather"][0]["description"].title()
+		try:
+			weather_params = {
+				"lat": data["latitude"], "lon": data["longitude"],
+				"appid": WEATHER_API
+			}
+			response = requests.get(url='https://api.openweathermap.org/data/2.5/weather', params=weather_params)
+			weather = response.json()["weather"][0]["description"].title()
+		except KeyError:
+			weather = "No info available"
 
 		news_params = {
 			"language": "en",
