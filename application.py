@@ -12,7 +12,7 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-IP = "142.250.184.14"
+IP = None
 ERROR = None
 
 def get_info(forced=False):
