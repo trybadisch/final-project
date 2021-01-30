@@ -125,6 +125,7 @@ def index():
 				return redirect("/")
 			elif "check local":
 				IP = None
+				get_info()
 				return redirect("/")
 
 	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME, runtime=RUNNING)
@@ -146,6 +147,7 @@ def terminal():
 				return redirect("/")
 			elif "check local":
 				IP = None
+				get_info()
 				return redirect("/")
 
 	return render_template("terminal.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
