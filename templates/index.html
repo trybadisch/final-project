@@ -30,19 +30,22 @@
 				<p>This is your digital fingerprint:</p>
 
 				<p>You live in <span class="color">{{ data.country_name }}</span>.<br>
-					In <span class="color">{{ data.city }} city</span>, in <span class="color">{{ data.region }}</span>.<br>
-					Your postal code is <span class="color">{{ data.postal }}</span>.</p>
+					In <span class="color">{{ data.city }} city</span>, in <span class="color">{{ data.region_name }}</span>.<br>
+					Your postal code is <span class="color">{{ data.zip }}</span>.</p>
 
 				<p>Your coordinates are: <span class="color">{{ data.latitude }} lat. {{ data.longitude }} long</span>.</p>
 
-				<p>Your languages are: <span class="color">{{ data.languages }}</span>.<br>
+				<p>Your languages are: <span class="color">
+					{% for lang in data.location.languages %}
+					{{ lang.name }}
+					{% endfor %}
+				</span><br>
 					Your browser's language is <span id="language" class="color"></span></p>
 
 				<p>Your OS is <span id="os" class="color"></span>. You have <span id="cpu" class="color"></span> <span class="color">CPU cores</span>.<br>
 					Your browser's user agent is: <span id="user-agent" class="color"></span>.</p>
 
-				<p>Your ISP is <span class="color">{{ data.org }}</span>.<br>
-					Your IP version is <span class="color">{{ data.version }}</span>.</p>
+				<p>Your IP version is <span class="color">{{ data.type }}</span>.</p>
 
 				<p>You come from <a id="referrer" class="color" href="#"></a> and you are browsing <span id="online" class="color"></span>.<br>
 					Your cookies are <span id="cookies" class="color"></span>.</p>

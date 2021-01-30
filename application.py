@@ -6,6 +6,7 @@ import os
 
 WEATHER_API = os.getenv('WEATHER_API')
 NEWS_API = os.getenv('NEWS_API')
+IP_API = os.getenv('IP_API')
 
 DATA = None
 MESSAGES = None
@@ -25,7 +26,13 @@ def get_info(forced=False):
 				ip = request.remote_addr
 		else:
 			ip = IP
-		response = requests.get(url=f'https://ipapi.co/{ip}/json/')
+
+		api_params = {
+			"access_key": IP_API,
+			"hostname": 1,
+
+		}
+		response = requests.get(url=f'http://api.ipapi.com/api/{ip}', params=api_params)
 		data = response.json()
 
 		try:
