@@ -12,7 +12,7 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-IP = "92.57.105.50"
+IP = None
 ERROR = None
 
 def get_info(forced=False):
@@ -110,6 +110,9 @@ def index():
 				IP = terminal.split()[1]
 				get_info(forced=True)
 				return redirect("/")
+			elif "check local":
+				IP = None
+				return redirect("/")
 
 	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME, runtime=RUNNING)
 
@@ -127,6 +130,9 @@ def terminal():
 			elif "check" in terminal:
 				IP = terminal.split()[1]
 				get_info(forced=True)
+				return redirect("/")
+			elif "check local":
+				IP = None
 				return redirect("/")
 
 	return render_template("terminal.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
