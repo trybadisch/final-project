@@ -20,6 +20,7 @@ def get_info(forced=False):
 	if not DATA or not forced:
 		if not IP:
 			ip = request.remote_addr
+			print(ip)
 		else:
 			ip = IP
 		response = requests.get(url=f'https://ipapi.co/{ip}/json/')
