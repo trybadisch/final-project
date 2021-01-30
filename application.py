@@ -13,7 +13,7 @@ MESSAGES = None
 THEME = "green"
 RUNNING = dt.datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
 
-IP = "216.58.201.142"
+IP = None
 ERROR = None
 
 def get_info(forced=False):
@@ -118,13 +118,13 @@ def index():
 		if terminal:
 			if "color" in terminal or "theme" in terminal:
 				theme_change(terminal)
-			elif "check" in terminal:
-				IP = terminal.split()[1]
-				get_info(forced=True)
-				return redirect("/")
 			elif "check local":
 				IP = None
 				get_info()
+				return redirect("/")
+			elif "check" in terminal:
+				IP = terminal.split()[1]
+				get_info(forced=True)
 				return redirect("/")
 
 	return render_template("index.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, messages=MESSAGES, theme=THEME, runtime=RUNNING)
@@ -140,13 +140,13 @@ def terminal():
 		if terminal:
 			if "color" in terminal or "theme" in terminal:
 				theme_change(terminal)
-			elif "check" in terminal:
-				IP = terminal.split()[1]
-				get_info(forced=True)
-				return redirect("/")
 			elif "check local":
 				IP = None
 				get_info()
+				return redirect("/")
+			elif "check" in terminal:
+				IP = terminal.split()[1]
+				get_info(forced=True)
 				return redirect("/")
 
 	return render_template("terminal.html", ip=DATA['ip'], data=DATA['data'], weather=DATA['weather'], news=DATA['news'], time=time, theme=THEME, runtime=RUNNING)
