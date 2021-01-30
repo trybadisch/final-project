@@ -2,4 +2,5 @@ Flask
 requests
 cs50
 SQLAlchemy
+gunicorn
 psycopg2
