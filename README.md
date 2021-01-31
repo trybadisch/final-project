@@ -14,3 +14,5 @@ The site is further divided into individual pages to account for mobile responsi
 IP checking is done through [https://ipapi.co/](https://ipapi.co/). The news marquee is achieved through [http://newsapi.org](http://newsapi.org) and the weather check based upon geolocation through [https://openweathermap.org/](https://openweathermap.org/)(both requiring an API key).
 
 The site is presented somewhat as a "web portal" instead of as a simple single website anticipating a more ambicious project in the future.
+
+Online version available at [http://web-spy.herokuapp.com/](http://web-spy.herokuapp.com/).
