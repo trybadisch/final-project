@@ -7,4 +7,6 @@ The site stores its visitors IP through a SQLite database, the same one used to 
 
 IP cheking is done through [https://ipapi.co/](https://ipapi.co/). The news marquee through [http://newsapi.org](http://newsapi.org) and the weather check based upon geolocation through [https://openweathermap.org/](https://openweathermap.org/)(both requiring an API key).
 
-The site is presented somewhat as a "web portal" instead of as a simple single website anticipating a more ambicious project in the future.
+The site is presented somewhat as a "web portal" instead of as a simple single website anticipating a more ambitious project in the future.
+
+[http://web-spy.herokuapp.com](http://web-spy.herokuapp.com)
